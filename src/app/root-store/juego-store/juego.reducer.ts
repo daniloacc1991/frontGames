@@ -6,6 +6,8 @@ export const juegoesFeatureKey = 'juegos';
 
 export const reducerJuegos = createReducer<JuegoState>(
   initialJuegoState,
+  on(JuegoStoreActions.SetCurrentId, (state, { id }) =>
+    ({ ...state, currentId: id })),
   on(JuegoStoreActions.LoadAll, (state) =>
     ({ ...state, isLoading: true, error: undefined })),
   on(JuegoStoreActions.LoadAllSuccess, (state, { items }) =>

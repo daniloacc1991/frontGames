@@ -2,7 +2,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { ICliente } from '../../core/models';
 
 export interface ClienteState extends EntityState<ICliente> {
-  currentId: number,
+  currentId: number;
   isLoading: boolean;
   error: string;
 }
