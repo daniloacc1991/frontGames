@@ -2,6 +2,11 @@ import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 import { IJuego } from '../../core/models';
 
+export const SetCurrentId = createAction(
+  '[Juego/API] Set Current Id',
+  props<{ id: number; }>(),
+);
+
 export const LoadAll = createAction(
   '[Juego/API] Load All',
 );

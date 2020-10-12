@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { reducers, metaReducers } from './root-state';
 import { CustomSerializer } from './custom-route-serializer';
 import { AlertStoreModule } from './alert-store';
+import { GeneralStoreModule } from './general-store';
 
 @NgModule({
   declarations: [],
@@ -27,6 +28,7 @@ import { AlertStoreModule } from './alert-store';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     AlertStoreModule,
+    GeneralStoreModule,
   ]
 })
 export class RootStoreModule { }

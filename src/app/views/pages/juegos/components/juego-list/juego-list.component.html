@@ -1,0 +1,78 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Listado de Juegos</mat-card-title>
+    <div class="card-actions">
+      <a class="btn btn-primary kt-margin-r-10" color="primary" (click)="create()" mat-raised-button
+        matTooltip="Save & Continue">
+        <em class="la la-save"></em>
+        <span class="kt-hidden-mobile">Crear Juego</span>
+      </a>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+          <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ano">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Año </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ano}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="titulo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.titulo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="tecnologia">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Tecnologia </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.tecnologia?.nombre | capitalize}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="productor">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Productor </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.productor?.nombre | capitalize}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="protagonista">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Protagonista </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.protagonista?.nombre | capitalize}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="director">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Director </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.director?.nombre | capitalize}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="precio">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Precio </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.precio}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button color="accent" (click)="edit(element.id)">
+              <mat-icon>create</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </mat-card-content>
+</mat-card>
