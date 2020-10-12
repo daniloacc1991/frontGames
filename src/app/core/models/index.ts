@@ -1,3 +1,4 @@
+export * from './alquiler.model';
 export * from './cliente.model';
 export * from './director.model';
 export * from './juego.model';
