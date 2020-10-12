@@ -11,6 +11,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { CoreModule } from '../../../core/core.module';
 import { JuegoStoreModule } from '../../../root-store/juego-store';
@@ -40,6 +42,8 @@ import { JuegoEditComponent } from './components/juego-edit/juego-edit.component
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
+    MatSelectModule,
+    MatAutocompleteModule,
   ]
 })
 export class JuegosModule { }

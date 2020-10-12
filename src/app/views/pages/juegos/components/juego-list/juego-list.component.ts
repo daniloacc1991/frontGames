@@ -43,6 +43,7 @@ export class JuegoListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   edit(id: number): void {
+    this.store.dispatch(JuegoStoreActions.SetCurrentId({ id }));
     this.router.navigate(['/juegos', 'edit', id]);
   }
 
