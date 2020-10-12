@@ -1,0 +1,132 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{title}}</mat-card-title>
+    <div class="card-actions">
+      <a [ngClass]="{'disabled': !fgJuego.valid}" class="btn btn-primary kt-margin-r-10" color="primary"
+        (click)="onSubmit()" mat-raised-button matTooltip="Save & Continue" [disabled]="!fgJuego.valid">
+        <em class="la la-save"></em>
+        <span class="kt-hidden-mobile">{{textButton}}</span>
+      </a>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="fgJuego">
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field>
+              <input matInput placeholder="Titulo" formControlName="titulo">
+              <mat-error *ngIf="isControlHasError('titulo', 'required')"> El titulo es <strong>obligatorio.</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field>
+              <input matInput placeholder="Año" formControlName="ano">
+              <mat-error *ngIf="isControlHasError('ano', 'required')"> El año es <strong>obligatorio.</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field>
+              <input type="number" matInput placeholder="Precio" formControlName="precio">
+              <mat-error *ngIf="isControlHasError('precio', 'required')"> El precio es <strong>obligatorio.</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field>
+              <mat-label>Disponible ?</mat-label>
+              <mat-select formControlName="disponible">
+                <mat-option [value]="true">SI</mat-option>
+                <mat-option [value]="false">NO</mat-option>
+              </mat-select>
+              <mat-error *ngIf="isControlHasError('disponible', 'required')"> La disponibilidad es
+                <strong>obligatoria.</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field>
+              <input type="text" class="text-capitalize" matInput placeholder="Director" formControlName="director"
+                [matAutocomplete]="autoDirector">
+              <mat-autocomplete #autoDirector="matAutocomplete" [displayWith]="displayFnDirector">
+                <mat-option *ngFor="let option of directores$ | async" [value]="option">
+                  {{option.nombre | capitalize}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="isControlHasError('director', 'required')"> El director es <strong>obligatorio.</strong>
+              </mat-error>
+              <mat-error *ngIf="isControlHasError('director', 'json')"> Favor seleccione un director de la lista.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field>
+              <input type="text" class="text-capitalize" matInput placeholder="Productor" formControlName="productor"
+                [matAutocomplete]="autoProductor">
+              <mat-autocomplete #autoProductor="matAutocomplete" [displayWith]="displayFnProductor">
+                <mat-option *ngFor="let option of productores$ | async" [value]="option">
+                  {{option.nombre | capitalize}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="isControlHasError('productor', 'required')"> El productor es
+                <strong>obligatorio.</strong>
+              </mat-error>
+              <mat-error *ngIf="isControlHasError('productor', 'json')"> Favor seleccione un productor de la lista.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field>
+              <input type="text" class="text-capitalize" matInput placeholder="Protagonista" formControlName="protagonista"
+                [matAutocomplete]="autoProtagonista">
+              <mat-autocomplete #autoProtagonista="matAutocomplete" [displayWith]="displayFnProtagonista">
+                <mat-option *ngFor="let option of protagonistas$ | async" [value]="option">
+                  {{option.nombre | capitalize}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="isControlHasError('protagonistas', 'required')"> El protagonistas es <strong>obligatorio.</strong>
+              </mat-error>
+              <mat-error *ngIf="isControlHasError('protagonistas', 'json')"> Favor seleccione un protagonistas de la lista.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field>
+              <input type="text" class="text-capitalize" matInput placeholder="Tecnologia" formControlName="tecnologia"
+                [matAutocomplete]="autoTecnologia">
+              <mat-autocomplete #autoTecnologia="matAutocomplete" [displayWith]="displayFnTecnologia">
+                <mat-option *ngFor="let option of tecnologias$ | async" [value]="option">
+                  {{option.nombre | capitalize}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="isControlHasError('tecnologia', 'required')"> La tecnologia es
+                <strong>obligatoria.</strong>
+              </mat-error>
+              <mat-error *ngIf="isControlHasError('tecnologia', 'json')"> Favor seleccione una tecnologia de la lista.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
